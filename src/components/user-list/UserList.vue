@@ -3,7 +3,7 @@
         <search-box @handleSearch="onSearch"/>
         <div class="user-list">
             <div v-for="contact in resultQuery" :key="contact.id">
-                <User 
+                <user 
                     :contact="contact"
                 />
             </div>
