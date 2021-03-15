@@ -1,5 +1,5 @@
 <template>
-    <div class="card-container">
+    <div class="user-container">
         <h3>{{this.contact.name}}</h3>
         <span>
             <label>Username:</label> 
@@ -35,12 +35,13 @@
 
 <script>
 export default {
-    props: ['contact'],
+    props: {contact: Object},
+    name:"user",
 }
 </script>
 
 <style>
-.card-container {
+.user-container {
   display: flex;
   flex-direction: column;
   background-color: #95dada;
@@ -54,7 +55,7 @@ export default {
   transition: transform 0.25s ease-out;
 }
 
-.card-container:hover {
+.user-container:hover {
   transform: scale(1.05);
 }
 

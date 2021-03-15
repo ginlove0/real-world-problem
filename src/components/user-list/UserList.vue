@@ -1,9 +1,9 @@
 <template>
     <div>
         <search-box @handleSearch="onSearch"/>
-        <div class="card-list">
+        <div class="user-list">
             <div v-for="contact in resultQuery" :key="contact.id">
-                <Card 
+                <User 
                     :contact="contact"
                 />
             </div>
@@ -14,13 +14,13 @@
     
 <script>
 import axios from 'axios';
-import Card from '../card/CardComponent'
-import SearchBox from '../search-box/SearchBoxComponent.vue';
+import User from '../user/User';
+import SearchBox from '../search-box/SearchBox.vue';
 
 export default {
-    name: 'cardList',
+    name: 'userList',
     components:{
-        Card,
+        User,
         SearchBox
     },
     data() {
@@ -30,24 +30,26 @@ export default {
         }
     },
     computed: {
-        //TODO: filter by search input
-        resultQuery(){
+        //filter by search input
+        resultQuery: function(){
             if(this.searchQuery){
                 return this.contacts.filter(user => user.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
-            }else{
-                return this.contacts;
             }
+            return this.contacts;
         }
         
     },
     methods:{
-        //TODO: fetch data from API, using axios package
+        //fetch data from API, using axios package
         fetchDataContact: function(){
             axios.get('https://jsonplaceholder.typicode.com/users')
             .then((res) => {
                 if(res){
                     this.contacts = res.data;
                 }
+            })
+            .catch((err) => {
+                console.log('Error in fetching api ' + err);
             })
         },
 
@@ -58,12 +60,12 @@ export default {
 
     mounted(){
         this.fetchDataContact()
-    }
+    },
 }
 </script>
 
 <style>
-.card-list {
+.user-list {
   width: 85vw;
   margin: 0 auto;
   display: grid;

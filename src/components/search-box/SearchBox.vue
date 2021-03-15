@@ -1,12 +1,13 @@
 <template>
     <div class="search-container">
-        <input class="search"  placeholder="Search name" type="input"  v-on:change="handleSearch" />
+        <input class="search"  placeholder="Search name" type="input"  @change="handleSearch" />
     </div>
 </template>
 <script>
 export default {
+    name: "searchBox",
     methods:{
-        //TODO: passing data from input search to card list filter
+        //passing data from input search to card list filter
         handleSearch: function(event) {
             this.$emit('handleSearch', event)
         }

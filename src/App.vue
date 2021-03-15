@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <card-list />
+    <user-list />
   </div>
 </template>
 
 <script>
-import CardList from './components/card-list/CardListComponent.vue'
+import UserList from './components/user-list/UserList.vue'
 
 export default {
   name: 'App',
   components: {
-    CardList
+    UserList
   }
 }
 </script>
