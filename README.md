@@ -1,4 +1,5 @@
 # resonate-technical-test
+``` This is a project that allows the user to browse their contacts ```
 
 ## Project setup
 ```
